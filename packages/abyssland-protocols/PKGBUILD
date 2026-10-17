@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abyssland-protocols
+pkgver=0.7.0.r20261017.g23246e7
+pkgrel=1
+pkgdesc='Wayland protocol extensions for Abyss'
+arch=('any')
+url='https://github.com/AbyssWM/Abyssland-protocols'
+license=('BSD-3-Clause')
+depends=()
+makedepends=('meson' 'ninja' 'pkgconf')
+source=('Abyssland-protocols-23246e7462e75bc07a04e62b1edc68b68770f73e.tar.gz::https://github.com/AbyssWM/Abyssland-protocols/archive/23246e7462e75bc07a04e62b1edc68b68770f73e.tar.gz')
+sha256sums=('1cbc35cfa275eaae72614897d2b1b0ebe2af5708e383b4aa1fbdc88df3542822')
+
+build() {
+	arch-meson "$srcdir/Abyssland-protocols-23246e7462e75bc07a04e62b1edc68b68770f73e" build
+	meson compile -C build
+}
+
+package() {
+	DESTDIR="$pkgdir" meson install -C build
+	install -Dm644 "$srcdir/Abyssland-protocols-23246e7462e75bc07a04e62b1edc68b68770f73e/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

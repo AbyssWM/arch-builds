@@ -1,0 +1,27 @@
+pkgbase = abysspaper
+	pkgdesc = Wallpaper manager for Abyss
+	pkgver = 0.8.4.r20261017.g4e06e75
+	pkgrel = 1
+	url = https://github.com/AbyssWM/AbyssPaper
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = abyss-scanner
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = abyssparse
+	depends = abysstoolkit
+	depends = abyssutils
+	depends = abysswire
+	depends = libdrm
+	depends = libglvnd
+	depends = mesa
+	depends = mpv
+	depends = pixman
+	depends = wayland
+	source = 0001-find-installed-config-module.patch
+	source = AbyssPaper-4e06e7590cd135fc7592e60b469699a641bec47c.tar.gz::https://github.com/AbyssWM/AbyssPaper/archive/4e06e7590cd135fc7592e60b469699a641bec47c.tar.gz
+	sha256sums = e75f6d2762056b64ae8c8f32edf789b3b55c0603cd489822dc70d2a47cf257fe
+	sha256sums = 2576e4c28a2edba50de600ccb6e4567486e9190528e43a30f6074f6903b06682
+
+pkgname = abysspaper

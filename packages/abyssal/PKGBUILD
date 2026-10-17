@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abyssal
+pkgver=0.15.0.r20261017.g95bbf98
+pkgrel=1
+pkgdesc='Rendering and display backend library for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Abyssal'
+license=('BSD-3-Clause')
+depends=('abyssutils' 'hwdata' 'libdisplay-info' 'libdrm' 'libglvnd' 'libinput' 'mesa' 'pixman' 'seatd' 'systemd-libs' 'wayland' 'wayland-protocols')
+makedepends=('abyss-scanner' 'cmake' 'ninja' 'pkgconf')
+source=('Abyssal-95bbf980b4c704b517d557038ba4460080847314.tar.gz::https://github.com/AbyssWM/Abyssal/archive/95bbf980b4c704b517d557038ba4460080847314.tar.gz')
+sha256sums=('269bdf8c8bced938de0c772fa90907a4e82d08a3cb8e9e1a16a3da8006e653d0')
+
+build() {
+	cmake -S "$srcdir/Abyssal-95bbf980b4c704b517d557038ba4460080847314" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Abyssal-95bbf980b4c704b517d557038ba4460080847314/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

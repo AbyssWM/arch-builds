@@ -1,0 +1,22 @@
+pkgbase = abysspolkit
+	pkgdesc = Polkit authentication agent for Abyss
+	pkgver = 0.2.0.r20261017.gf121b36
+	pkgrel = 1
+	url = https://github.com/AbyssWM/AbyssPolkit
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = abyssgraphics
+	depends = abyssparse
+	depends = abysstoolkit
+	depends = abyssutils
+	depends = libdrm
+	depends = pixman
+	depends = polkit
+	depends = sdbus-cpp
+	source = AbyssPolkit-f121b36311c1d4cd1382fe29704d353d203a49a0.tar.gz::https://github.com/AbyssWM/AbyssPolkit/archive/f121b36311c1d4cd1382fe29704d353d203a49a0.tar.gz
+	sha256sums = f33d4b688692f37c7e1e8a0ef288e24d0d211ca73c69cc061ea20b489208db7f
+
+pkgname = abysspolkit

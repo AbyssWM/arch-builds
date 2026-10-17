@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abysstoolkit
+pkgver=0.6.0.r20261017.g9a095e0
+pkgrel=1
+pkgdesc='Native graphical toolkit and config preprocessor for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Abysstoolkit'
+license=('BSD-3-Clause')
+depends=('abseil-cpp' 'abyssal' 'abyssgraphics' 'abyssparse' 'abyssutils' 'cairo' 'iniparser' 'libdrm' 'libglvnd' 'libxkbcommon' 'mesa' 'pango' 'pixman' 'python' 'wayland' 'wayland-protocols')
+makedepends=('abyss-scanner' 'cmake' 'ninja' 'pkgconf')
+source=('Abysstoolkit-9a095e013abdd600b617e912f207430eaeafda18.tar.gz::https://github.com/AbyssWM/Abysstoolkit/archive/9a095e013abdd600b617e912f207430eaeafda18.tar.gz')
+sha256sums=('61622f6f4ae903e5e991d9d555b12207c97cf274def0b7934b348628f531b156')
+
+build() {
+	cmake -S "$srcdir/Abysstoolkit-9a095e013abdd600b617e912f207430eaeafda18" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Abysstoolkit-9a095e013abdd600b617e912f207430eaeafda18/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

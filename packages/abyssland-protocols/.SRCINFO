@@ -1,0 +1,14 @@
+pkgbase = abyssland-protocols
+	pkgdesc = Wayland protocol extensions for Abyss
+	pkgver = 0.7.0.r20261017.g23246e7
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abyssland-protocols
+	arch = any
+	license = BSD-3-Clause
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	source = Abyssland-protocols-23246e7462e75bc07a04e62b1edc68b68770f73e.tar.gz::https://github.com/AbyssWM/Abyssland-protocols/archive/23246e7462e75bc07a04e62b1edc68b68770f73e.tar.gz
+	sha256sums = 1cbc35cfa275eaae72614897d2b1b0ebe2af5708e383b4aa1fbdc88df3542822
+
+pkgname = abyssland-protocols

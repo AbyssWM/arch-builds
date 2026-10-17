@@ -1,0 +1,15 @@
+pkgbase = abyss-scanner
+	pkgdesc = C++ Wayland protocol scanner for Abyss
+	pkgver = 0.4.5.r20261017.g84f54bf
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abyss-scanner
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = pugixml
+	source = Abyss-scanner-84f54bf0d3074ef8700d3e89699181accdd28cba.tar.gz::https://github.com/AbyssWM/Abyss-scanner/archive/84f54bf0d3074ef8700d3e89699181accdd28cba.tar.gz
+	sha256sums = 82528be339b642f28a38ca495a6388300313dce37e624d67ae2c88e3992a1255
+
+pkgname = abyss-scanner

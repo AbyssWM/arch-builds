@@ -1,0 +1,15 @@
+pkgbase = abyssparse
+	pkgdesc = Configuration parsing library for Abyss
+	pkgver = 0.6.8.r20261017.gdcd10ad
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abyssparse
+	arch = x86_64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = abyssutils
+	source = Abyssparse-dcd10adbf858a4f0128a04938878844d935298d9.tar.gz::https://github.com/AbyssWM/Abyssparse/archive/dcd10adbf858a4f0128a04938878844d935298d9.tar.gz
+	sha256sums = cedd57c46b449d5ba8998020d458cc9a6a9394759225342aa1048964125cf685
+
+pkgname = abyssparse

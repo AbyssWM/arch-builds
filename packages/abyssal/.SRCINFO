@@ -1,0 +1,27 @@
+pkgbase = abyssal
+	pkgdesc = Rendering and display backend library for Abyss
+	pkgver = 0.15.0.r20261017.g95bbf98
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abyssal
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = abyss-scanner
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = abyssutils
+	depends = hwdata
+	depends = libdisplay-info
+	depends = libdrm
+	depends = libglvnd
+	depends = libinput
+	depends = mesa
+	depends = pixman
+	depends = seatd
+	depends = systemd-libs
+	depends = wayland
+	depends = wayland-protocols
+	source = Abyssal-95bbf980b4c704b517d557038ba4460080847314.tar.gz::https://github.com/AbyssWM/Abyssal/archive/95bbf980b4c704b517d557038ba4460080847314.tar.gz
+	sha256sums = 269bdf8c8bced938de0c772fa90907a4e82d08a3cb8e9e1a16a3da8006e653d0
+
+pkgname = abyssal

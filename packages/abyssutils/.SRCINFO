@@ -1,0 +1,15 @@
+pkgbase = abyssutils
+	pkgdesc = Utility library for the Abyss ecosystem
+	pkgver = 0.14.2.r20261017.gb423270
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abyssutils
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = pixman
+	source = Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz::https://github.com/AbyssWM/Abyssutils/archive/b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz
+	sha256sums = 42a8e2d5fbac0bb9c1837b94b22ce3d491e05159fb1f64258b25fe2fd106d02e
+
+pkgname = abyssutils

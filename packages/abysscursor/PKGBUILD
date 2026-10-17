@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abysscursor
+pkgver=0.1.13.r20261017.g6a762ed
+pkgrel=1
+pkgdesc='Cursor library and theme tools for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Abysscursor'
+license=('BSD-3-Clause')
+depends=('abyssparse' 'cairo' 'librsvg' 'libzip' 'tomlplusplus')
+makedepends=('cmake' 'ninja' 'pkgconf')
+source=('Abysscursor-6a762edb75677f8cc46a20cb26b615bbabb5155a.tar.gz::https://github.com/AbyssWM/Abysscursor/archive/6a762edb75677f8cc46a20cb26b615bbabb5155a.tar.gz')
+sha256sums=('a18b616212a28339358fdf84158ecf0ac0163e61d4d194bda6776a91a79586b5')
+
+build() {
+	cmake -S "$srcdir/Abysscursor-6a762edb75677f8cc46a20cb26b615bbabb5155a" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Abysscursor-6a762edb75677f8cc46a20cb26b615bbabb5155a/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

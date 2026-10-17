@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abyssutils
+pkgver=0.14.2.r20261017.gb423270
+pkgrel=1
+pkgdesc='Utility library for the Abyss ecosystem'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Abyssutils'
+license=('BSD-3-Clause')
+depends=('pixman')
+makedepends=('cmake' 'ninja' 'pkgconf')
+source=('Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz::https://github.com/AbyssWM/Abyssutils/archive/b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz')
+sha256sums=('42a8e2d5fbac0bb9c1837b94b22ce3d491e05159fb1f64258b25fe2fd106d02e')
+
+build() {
+	cmake -S "$srcdir/Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

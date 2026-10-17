@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abysspaper
+pkgver=0.8.4.r20261017.g4e06e75
+pkgrel=1
+pkgdesc='Wallpaper manager for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/AbyssPaper'
+license=('BSD-3-Clause')
+depends=('abyssparse' 'abysstoolkit' 'abyssutils' 'abysswire' 'libdrm' 'libglvnd' 'mesa' 'mpv' 'pixman' 'wayland')
+makedepends=('abyss-scanner' 'cmake' 'ninja' 'pkgconf')
+source=('0001-find-installed-config-module.patch' 'AbyssPaper-4e06e7590cd135fc7592e60b469699a641bec47c.tar.gz::https://github.com/AbyssWM/AbyssPaper/archive/4e06e7590cd135fc7592e60b469699a641bec47c.tar.gz')
+sha256sums=('e75f6d2762056b64ae8c8f32edf789b3b55c0603cd489822dc70d2a47cf257fe' '2576e4c28a2edba50de600ccb6e4567486e9190528e43a30f6074f6903b06682')
+
+prepare() {
+	patch -d "$srcdir/AbyssPaper-4e06e7590cd135fc7592e60b469699a641bec47c" -p1 -i "$srcdir/0001-find-installed-config-module.patch"
+}
+
+build() {
+	cmake -S "$srcdir/AbyssPaper-4e06e7590cd135fc7592e60b469699a641bec47c" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+		-DABYSS_CONFIG_DIR="$srcdir/empty-config"
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/AbyssPaper-4e06e7590cd135fc7592e60b469699a641bec47c/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

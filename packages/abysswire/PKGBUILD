@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=abysswire
+pkgver=0.3.1.r20261017.g5556523
+pkgrel=1
+pkgdesc='IPC wire protocol library and scanner for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Abysswire'
+license=('BSD-3-Clause')
+depends=('abyssutils' 'libffi' 'pugixml')
+makedepends=('cmake' 'ninja' 'pkgconf')
+source=('Abysswire-55565230b6ac2fbdf9fbeb23f074d4c006715d69.tar.gz::https://github.com/AbyssWM/Abysswire/archive/55565230b6ac2fbdf9fbeb23f074d4c006715d69.tar.gz')
+sha256sums=('f392a31c4693f2a3297bb796304cdab4cefe05666b840b12048e06a4cd221b42')
+
+build() {
+	cmake -S "$srcdir/Abysswire-55565230b6ac2fbdf9fbeb23f074d4c006715d69" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Abysswire-55565230b6ac2fbdf9fbeb23f074d4c006715d69/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

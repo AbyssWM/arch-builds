@@ -1,0 +1,17 @@
+pkgbase = abysswire
+	pkgdesc = IPC wire protocol library and scanner for Abyss
+	pkgver = 0.3.1.r20261017.g5556523
+	pkgrel = 1
+	url = https://github.com/AbyssWM/Abysswire
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = abyssutils
+	depends = libffi
+	depends = pugixml
+	source = Abysswire-55565230b6ac2fbdf9fbeb23f074d4c006715d69.tar.gz::https://github.com/AbyssWM/Abysswire/archive/55565230b6ac2fbdf9fbeb23f074d4c006715d69.tar.gz
+	sha256sums = f392a31c4693f2a3297bb796304cdab4cefe05666b840b12048e06a4cd221b42
+
+pkgname = abysswire

@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: 0BSD
+# Pinned development snapshot; native Arch build pending.
+pkgname=xdg-desktop-portal-abyss
+pkgver=1.4.1.r20261017.gc4e1197
+pkgrel=1
+pkgdesc='Desktop portal and screen sharing picker for Abyss'
+arch=('x86_64')
+url='https://github.com/AbyssWM/Xdg-desktop-portal-abyss'
+license=('BSD-3-Clause')
+depends=('abyssparse' 'abyssutils' 'libdrm' 'mesa' 'pipewire' 'qt6-base' 'qt6-wayland' 'sdbus-cpp' 'util-linux-libs' 'wayland' 'wayland-protocols' 'xdg-desktop-portal')
+makedepends=('abyss-scanner' 'abyssland-protocols' 'cmake' 'ninja' 'pkgconf')
+source=('Xdg-desktop-portal-abyss-c4e1197e9aaed10773d0d142d13d40223a92b0eb.tar.gz::https://github.com/AbyssWM/Xdg-desktop-portal-abyss/archive/c4e1197e9aaed10773d0d142d13d40223a92b0eb.tar.gz')
+sha256sums=('962d8e61267e48b3e5d2c84e9104cb0a0a93a0f893781626d7eb072a5848b5ae')
+
+build() {
+	cmake -S "$srcdir/Xdg-desktop-portal-abyss-c4e1197e9aaed10773d0d142d13d40223a92b0eb" -B build -G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=OFF \
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+		-DSYSTEMD_SERVICES=ON
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 "$srcdir/Xdg-desktop-portal-abyss-c4e1197e9aaed10773d0d142d13d40223a92b0eb/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
