@@ -1,19 +1,19 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build pending.
 pkgname=abyssparse
-pkgver=0.6.8.r20261017.gdcd10ad
-pkgrel=1
+pkgver=0.6.8.r20261017.g45d399e
+pkgrel=2
 pkgdesc='Configuration parsing library for Abyss'
 arch=('x86_64')
 url='https://github.com/AbyssWM/Abyssparse'
 license=('LGPL-3.0-only')
 depends=('abyssutils')
 makedepends=('cmake' 'ninja' 'pkgconf')
-source=('Abyssparse-dcd10adbf858a4f0128a04938878844d935298d9.tar.gz::https://github.com/AbyssWM/Abyssparse/archive/dcd10adbf858a4f0128a04938878844d935298d9.tar.gz')
-sha256sums=('cedd57c46b449d5ba8998020d458cc9a6a9394759225342aa1048964125cf685')
+source=('Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482.tar.gz::https://github.com/AbyssWM/Abyssparse/archive/45d399ec11762312395d62f1e66f6d3c4b53c482.tar.gz')
+sha256sums=('b3b43a824e8a6112c7a62534536f712146ea27daea77ff6afe06179d536e47c4')
 
 build() {
-	cmake -S "$srcdir/Abyssparse-dcd10adbf858a4f0128a04938878844d935298d9" -B build -G Ninja \
+	cmake -S "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,5 +25,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/Abyssparse-dcd10adbf858a4f0128a04938878844d935298d9/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/COPYRIGHT" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }

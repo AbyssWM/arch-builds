@@ -24,3 +24,5 @@ No AUR account, upload or package adoption has been performed.
 Maintainer: bb8TheRobot <bb8therobot85@gmail.com>. Packaging: 0BSD.
 Upstream source licenses and notices remain applicable. The attribution audit
 remains a separate release prerequisite.
+
+License scope and the retained upstream notices are described in [LICENSES.md](LICENSES.md).
