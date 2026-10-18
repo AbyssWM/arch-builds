@@ -41,62 +41,29 @@ jobs:
           name: arch-packages
           path: pkgs/*.pkg.tar.zst
 
-  # Signs the packages and publishes them to the pacman repository AbyssWM/arch (GitHub Pages).
-  # Needs the secrets ARCH_SIGNING_KEY (armored private GPG key) and ARCH_REPO_DEPLOY_KEY
-  # (SSH deploy key with write access to AbyssWM/arch); without them it does nothing.
-  publish:
+  # Puts the packages of a successful build on main into the rolling release "packages",
+  # where AbyssWM/arch picks them up, signs them and adds them to the pacman repository.
+  release:
     needs: build
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    container: archlinux:latest
+    permissions:
+      contents: write
     env:
-      SIGNING_KEY: ${{ secrets.ARCH_SIGNING_KEY }}
-      DEPLOY_KEY: ${{ secrets.ARCH_REPO_DEPLOY_KEY }}
-      KEY_ID: 7429EE25FE7F6A87620632B360D0CDE7A027F6A6
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
-      - name: Check for the secrets
-        id: secrets
-        run: |
-          if [ -n "$SIGNING_KEY" ] && [ -n "$DEPLOY_KEY" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "Secrets not set, skipping"; fi
-
-      - name: Install tools
-        if: steps.secrets.outputs.ok == 'true'
-        run: pacman -Syu --noconfirm --needed git gnupg openssh
-
       - uses: actions/download-artifact@v4
-        if: steps.secrets.outputs.ok == 'true'
         with:
           name: arch-packages
           path: pkgs
 
-      - uses: actions/checkout@v4
-        if: steps.secrets.outputs.ok == 'true'
-        with:
-          repository: AbyssWM/arch
-          ssh-key: ${{ secrets.ARCH_REPO_DEPLOY_KEY }}
-          path: repo
-
-      - name: Sign, add to the database and push
-        if: steps.secrets.outputs.ok == 'true'
+      - name: Replace the packages in the release
         run: |
           set -eu
-          git config --global --add safe.directory '*'
-          export GNUPGHOME="$(mktemp -d)"
-          printf '%s\n' "$SIGNING_KEY" | gpg --batch --import
-          cd repo
-          for pkg in ../pkgs/*.pkg.tar.zst; do
-            cp "$pkg" .
-            gpg --batch --yes --detach-sign --local-user "$KEY_ID" "$(basename "$pkg")"
+          gh release view packages >/dev/null 2>&1 || gh release create packages --title "Built packages" \
+            --notes "Packages built by the CI from main. Install them from the pacman repository: https://github.com/AbyssWM/arch"
+          for asset in $(gh release view packages --json assets -q '.assets[].name'); do
+            gh release delete-asset packages "$asset" --yes
           done
-          # -R removes the files of replaced versions; GitHub Pages serves no symlinks, so the
-          # database links become real files
-          repo-add --sign --key "$KEY_ID" -R abyss.db.tar.gz $(cd ../pkgs && ls *.pkg.tar.zst)
-          for f in abyss.db abyss.db.sig abyss.files abyss.files.sig; do
-            [ -L "$f" ] && cp --remove-destination "$(readlink "$f")" "$f"
-          done
-          gpg --armor --export "$KEY_ID" > abyss.gpg
-          git config user.name bb8TheRobot
-          git config user.email bb8TheRobot@users.noreply.github.com
-          git add -A
-          git commit -m "Packages from arch-builds ${GITHUB_SHA::7}" || exit 0
-          git push
+          gh release upload packages pkgs/*.pkg.tar.zst
