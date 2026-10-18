@@ -1,0 +1,42 @@
+# Builds all 17 Abyss packages in dependency order in the official archlinux image,
+# installing each one before the next is built. The packages are attached to the run.
+name: Build packages
+
+on:
+  push:
+    branches: [main]
+    paths: ["packages/**", "sources.json", "catalog.json", ".github/workflows/build.yml"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    timeout-minutes: 300
+    steps:
+      - name: Install build tools and a build user
+        run: |
+          pacman -Syu --noconfirm --needed base-devel git sudo python
+          useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/builder
+
+      - uses: actions/checkout@v4
+
+      - name: Build and install every package
+        run: |
+          set -eu
+          chown -R builder: .
+          export MAKEFLAGS="-j$(nproc)"
+          order=$(python3 -c 'import json; s=json.load(open("sources.json")); c=json.load(open("catalog.json")); print(" ".join(c["packages"][p["repo"]]["name"] for p in s["packages"]))')
+          for p in $order; do
+            echo "::group::$p"
+            (cd "packages/$p" && sudo -u builder --preserve-env=MAKEFLAGS makepkg -si --noconfirm)
+            echo "::endgroup::"
+          done
+          mkdir -p pkgs
+          cp packages/*/*.pkg.tar.zst pkgs/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arch-packages
+          path: pkgs/*.pkg.tar.zst
