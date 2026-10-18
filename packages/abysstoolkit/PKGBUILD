@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-# Pinned development snapshot; native Arch build pending.
+# Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abysstoolkit
 pkgver=0.6.0.r20261017.g9a095e0
 pkgrel=1

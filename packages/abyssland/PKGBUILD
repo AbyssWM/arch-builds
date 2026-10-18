@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-# Pinned development snapshot; native Arch build pending.
+# Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssland
 pkgver=0.56.2.r20261017.geafefb8
 pkgrel=1

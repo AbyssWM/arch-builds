@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-# Pinned development snapshot; native Arch build pending.
+# Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyss-guiutils
 pkgver=0.2.2.r20261017.gda66469
 pkgrel=1

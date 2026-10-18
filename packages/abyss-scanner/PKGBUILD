@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-# Pinned development snapshot; native Arch build pending.
+# Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyss-scanner
 pkgver=0.4.5.r20261017.g84f54bf
 pkgrel=1

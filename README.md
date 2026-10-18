@@ -1,7 +1,9 @@
 # Abyss Arch builds
 
 Experimental PKGBUILDs and `.SRCINFO` files for all 17 Abyss repositories.
-Native Arch clean-chroot builds and installation tests are **not yet validated**.
+All 17 packages were built natively with makepkg (2026-10-18) in the official
+archlinux-bootstrap image (signature and SHA-256 verified), installed in dependency
+order. Runtime tests are **not yet validated**.
 This Git repository is not an AUR publication or an official Arch repository.
 
 `packages/` contains the native definitions, in the dependency order recorded in

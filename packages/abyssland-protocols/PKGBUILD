@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: 0BSD
-# Pinned development snapshot; native Arch build pending.
+# Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssland-protocols
 pkgver=0.7.0.r20261017.g23246e7
 pkgrel=1
