@@ -1,6 +1,6 @@
 pkgbase = abyssland
 	pkgdesc = Dynamic tiling Wayland compositor with C++ configuration
-	pkgver = 0.56.2.r20261018.g6c90ce0
+	pkgver = 0.56.2.r20261021.g0a0a351
 	pkgrel = 1
 	url = https://github.com/AbyssWM/Abyssland
 	arch = x86_64
@@ -45,10 +45,10 @@ pkgbase = abyssland
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xorg-xwayland
-	source = Abyssland-6c90ce00a92bac527172c3590b95e094fcd08a73.tar.gz::https://github.com/AbyssWM/Abyssland/archive/6c90ce00a92bac527172c3590b95e094fcd08a73.tar.gz
+	source = Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39.tar.gz::https://github.com/AbyssWM/Abyssland/archive/0a0a351469da7f8281094e1d4f7abe96e2dcda39.tar.gz
 	source = glaze-7.2.0.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v7.2.0.tar.gz
 	source = udis86-5336633af70f3917760a6d441ff02d93477b0c86.tar.gz::https://github.com/canihavesomecoffee/udis86/archive/5336633af70f3917760a6d441ff02d93477b0c86.tar.gz
-	sha256sums = 1d6d827ce878d105e1eb773ede286faf661843bd1cfe002f0245d575d835fdf7
+	sha256sums = 2c238186e2121fe870447143a1ac77a534bffc35db7ffa2d6f950480c9a78eb1
 	sha256sums = 17dba19ae63ae48f94994f00d49d5cb3c8f1306db1046c534c4828662490b7d4
 	sha256sums = 2f459fafa19535ef1be417bf7614e4f92475e5787d7ba76df20287cc29d1b5a9
 
