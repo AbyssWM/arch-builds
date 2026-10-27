@@ -1,6 +1,6 @@
 pkgbase = abysspicker
 	pkgdesc = Wayland color picker for Abyss
-	pkgver = 0.4.7.r20261017.gfa99785
+	pkgver = 0.4.7.r20261027.g9724004
 	pkgrel = 1
 	url = https://github.com/AbyssWM/AbyssPicker
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = abysspicker
 	depends = pango
 	depends = wayland
 	depends = wayland-protocols
-	source = AbyssPicker-fa997857bfc513c240f8b442802dee64d15e1759.tar.gz::https://github.com/AbyssWM/AbyssPicker/archive/fa997857bfc513c240f8b442802dee64d15e1759.tar.gz
-	sha256sums = 18bc8ada83a3cd912140ae7f8bf825f55ffb6ee441b9ad0f267381222319955a
+	source = AbyssPicker-97240042de866686f1da1db3847ddd5f37603e27.tar.gz::https://github.com/AbyssWM/AbyssPicker/archive/97240042de866686f1da1db3847ddd5f37603e27.tar.gz
+	sha256sums = e20ff9b5596a8db82b9a979c633ee92f04f70c31b3f875bf8305a2c44322519f
 
 pkgname = abysspicker

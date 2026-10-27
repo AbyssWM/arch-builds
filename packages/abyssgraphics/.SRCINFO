@@ -1,6 +1,6 @@
 pkgbase = abyssgraphics
 	pkgdesc = Graphics and resource library for Abyss
-	pkgver = 0.5.1.r20261017.g22ddc75
+	pkgver = 0.5.1.r20261027.g5f590f2
 	pkgrel = 1
 	url = https://github.com/AbyssWM/Abyssgraphics
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = abyssgraphics
 	depends = mesa
 	depends = pango
 	depends = pixman
-	source = Abyssgraphics-22ddc7596eefffcee611181a556ff1a753eaf433.tar.gz::https://github.com/AbyssWM/Abyssgraphics/archive/22ddc7596eefffcee611181a556ff1a753eaf433.tar.gz
-	sha256sums = b254c6ed189468c5408a910cce14c48d3f1105a3bcbe81af82052993e515c22b
+	source = Abyssgraphics-5f590f21086f9c1fbb0ca1b0c1d7ffebdfb60945.tar.gz::https://github.com/AbyssWM/Abyssgraphics/archive/5f590f21086f9c1fbb0ca1b0c1d7ffebdfb60945.tar.gz
+	sha256sums = 5a191c008e3f2719fbd10633e48fa1b40bbf9742593b7f7e5e043c3a0972458d
 
 pkgname = abyssgraphics

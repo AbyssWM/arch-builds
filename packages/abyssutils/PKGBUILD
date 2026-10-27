@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssutils
-pkgver=0.14.2.r20261017.gb423270
+pkgver=0.14.2.r20261027.gf1f540b
 pkgrel=1
 pkgdesc='Utility library for the Abyss ecosystem'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://github.com/AbyssWM/Abyssutils'
 license=('BSD-3-Clause')
 depends=('pixman')
 makedepends=('cmake' 'ninja' 'pkgconf')
-source=('Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz::https://github.com/AbyssWM/Abyssutils/archive/b423270d43764d3b0f74584fa4a9c61ab1c9b9aa.tar.gz')
-sha256sums=('42a8e2d5fbac0bb9c1837b94b22ce3d491e05159fb1f64258b25fe2fd106d02e')
+source=('Abyssutils-f1f540b7121f6db3c0bb8518a072c1a79755cd82.tar.gz::https://github.com/AbyssWM/Abyssutils/archive/f1f540b7121f6db3c0bb8518a072c1a79755cd82.tar.gz')
+sha256sums=('7a579a81abc1dce8ba65e14ffde83f15acd03aa4b07788c5d03a764cce2a7462')
 
 build() {
-	cmake -S "$srcdir/Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa" -B build -G Ninja \
+	cmake -S "$srcdir/Abyssutils-f1f540b7121f6db3c0bb8518a072c1a79755cd82" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/Abyssutils-b423270d43764d3b0f74584fa4a9c61ab1c9b9aa/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/Abyssutils-f1f540b7121f6db3c0bb8518a072c1a79755cd82/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

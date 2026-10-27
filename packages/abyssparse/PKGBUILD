@@ -1,19 +1,19 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssparse
-pkgver=0.6.8.r20261017.g45d399e
-pkgrel=2
+pkgver=0.6.8.r20261027.g6c3c77e
+pkgrel=1
 pkgdesc='Configuration parsing library for Abyss'
 arch=('x86_64')
 url='https://github.com/AbyssWM/Abyssparse'
 license=('LGPL-3.0-only')
 depends=('abyssutils')
 makedepends=('cmake' 'ninja' 'pkgconf')
-source=('Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482.tar.gz::https://github.com/AbyssWM/Abyssparse/archive/45d399ec11762312395d62f1e66f6d3c4b53c482.tar.gz')
-sha256sums=('b3b43a824e8a6112c7a62534536f712146ea27daea77ff6afe06179d536e47c4')
+source=('Abyssparse-6c3c77e8a029e46d7416b84f67aff833f9beedd2.tar.gz::https://github.com/AbyssWM/Abyssparse/archive/6c3c77e8a029e46d7416b84f67aff833f9beedd2.tar.gz')
+sha256sums=('87ba448e0e84a56dd0785b7136b831e82c6895ddedad041a92cc7bad360db651')
 
 build() {
-	cmake -S "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482" -B build -G Ninja \
+	cmake -S "$srcdir/Abyssparse-6c3c77e8a029e46d7416b84f67aff833f9beedd2" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,7 +25,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -Dm644 "$srcdir/Abyssparse-45d399ec11762312395d62f1e66f6d3c4b53c482/COPYRIGHT" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+	install -Dm644 "$srcdir/Abyssparse-6c3c77e8a029e46d7416b84f67aff833f9beedd2/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/Abyssparse-6c3c77e8a029e46d7416b84f67aff833f9beedd2/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dm644 "$srcdir/Abyssparse-6c3c77e8a029e46d7416b84f67aff833f9beedd2/COPYRIGHT" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }

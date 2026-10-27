@@ -1,6 +1,6 @@
 pkgbase = abyss-guiutils
 	pkgdesc = Dialogs and application tools for Abyss
-	pkgver = 0.2.2.r20261017.gda66469
+	pkgver = 0.2.2.r20261027.gb25e097
 	pkgrel = 1
 	url = https://github.com/AbyssWM/Abyss-guiutils
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = abyss-guiutils
 	depends = libdrm
 	depends = libxkbcommon
 	depends = pixman
-	source = Abyss-guiutils-da6646906dab8557440ed8f5cca4157452105fc2.tar.gz::https://github.com/AbyssWM/Abyss-guiutils/archive/da6646906dab8557440ed8f5cca4157452105fc2.tar.gz
-	sha256sums = f2eb180c298dc718b8e3b144c9f114a05e4e9aacd852d01864162dda65a06d48
+	source = Abyss-guiutils-b25e0974ae580c63aa23252c4170eb7adf60f98d.tar.gz::https://github.com/AbyssWM/Abyss-guiutils/archive/b25e0974ae580c63aa23252c4170eb7adf60f98d.tar.gz
+	sha256sums = 13382fa09aa13f7c1d17462f638937be5212e2c6ec99aab39aef647a191b5eba
 
 pkgname = abyss-guiutils

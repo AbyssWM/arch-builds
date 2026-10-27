@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abysspolkit
-pkgver=0.2.0.r20261017.gf121b36
+pkgver=0.2.0.r20261027.gb3a214b
 pkgrel=1
 pkgdesc='Polkit authentication agent for Abyss'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://github.com/AbyssWM/AbyssPolkit'
 license=('BSD-3-Clause')
 depends=('abyssgraphics' 'abyssparse' 'abysstoolkit' 'abyssutils' 'libdrm' 'pixman' 'polkit' 'sdbus-cpp')
 makedepends=('cmake' 'ninja' 'pkgconf')
-source=('AbyssPolkit-f121b36311c1d4cd1382fe29704d353d203a49a0.tar.gz::https://github.com/AbyssWM/AbyssPolkit/archive/f121b36311c1d4cd1382fe29704d353d203a49a0.tar.gz')
-sha256sums=('f33d4b688692f37c7e1e8a0ef288e24d0d211ca73c69cc061ea20b489208db7f')
+source=('AbyssPolkit-b3a214b1948dcebd2f5f0f6cab2e6fdddf7cd486.tar.gz::https://github.com/AbyssWM/AbyssPolkit/archive/b3a214b1948dcebd2f5f0f6cab2e6fdddf7cd486.tar.gz')
+sha256sums=('9802a003f2dec0fb8b73adedf2d770a548a20e46d416b77b884768a21e1195dd')
 
 build() {
-	cmake -S "$srcdir/AbyssPolkit-f121b36311c1d4cd1382fe29704d353d203a49a0" -B build -G Ninja \
+	cmake -S "$srcdir/AbyssPolkit-b3a214b1948dcebd2f5f0f6cab2e6fdddf7cd486" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/AbyssPolkit-f121b36311c1d4cd1382fe29704d353d203a49a0/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/AbyssPolkit-b3a214b1948dcebd2f5f0f6cab2e6fdddf7cd486/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

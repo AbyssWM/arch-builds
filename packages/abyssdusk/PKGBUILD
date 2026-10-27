@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssdusk
-pkgver=0.4.0.r20261017.g01ad76f
+pkgver=0.4.0.r20261027.g6c58248
 pkgrel=1
 pkgdesc='Display color temperature manager for Abyss'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://github.com/AbyssWM/AbyssDusk'
 license=('BSD-3-Clause')
 depends=('abyssparse' 'abyssutils' 'wayland' 'wayland-protocols')
 makedepends=('abyss-scanner' 'abyssland-protocols' 'cmake' 'ninja' 'pkgconf')
-source=('AbyssDusk-01ad76f953f8d5139b5e03cd7cfaaf9342667f0b.tar.gz::https://github.com/AbyssWM/AbyssDusk/archive/01ad76f953f8d5139b5e03cd7cfaaf9342667f0b.tar.gz')
-sha256sums=('1870725946980001ea426c8723cfb7b3c0f2536673049a25a0762b8b59ef6b8c')
+source=('AbyssDusk-6c58248dbd91d392fde18aa7764181b80b2da539.tar.gz::https://github.com/AbyssWM/AbyssDusk/archive/6c58248dbd91d392fde18aa7764181b80b2da539.tar.gz')
+sha256sums=('9cced56fb5bc428081dddb36293241fd9ef6d006aa5e63a34881742ebb9dc077')
 
 build() {
-	cmake -S "$srcdir/AbyssDusk-01ad76f953f8d5139b5e03cd7cfaaf9342667f0b" -B build -G Ninja \
+	cmake -S "$srcdir/AbyssDusk-6c58248dbd91d392fde18aa7764181b80b2da539" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/AbyssDusk-01ad76f953f8d5139b5e03cd7cfaaf9342667f0b/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/AbyssDusk-6c58248dbd91d392fde18aa7764181b80b2da539/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

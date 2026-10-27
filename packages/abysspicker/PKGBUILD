@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abysspicker
-pkgver=0.4.7.r20261017.gfa99785
+pkgver=0.4.7.r20261027.g9724004
 pkgrel=1
 pkgdesc='Wayland color picker for Abyss'
 arch=('x86_64')
@@ -9,11 +9,11 @@ url='https://github.com/AbyssWM/AbyssPicker'
 license=('BSD-3-Clause')
 depends=('abyssutils' 'cairo' 'libjpeg-turbo' 'libxkbcommon' 'pango' 'wayland' 'wayland-protocols')
 makedepends=('abyss-scanner' 'cmake' 'ninja' 'pkgconf')
-source=('AbyssPicker-fa997857bfc513c240f8b442802dee64d15e1759.tar.gz::https://github.com/AbyssWM/AbyssPicker/archive/fa997857bfc513c240f8b442802dee64d15e1759.tar.gz')
-sha256sums=('18bc8ada83a3cd912140ae7f8bf825f55ffb6ee441b9ad0f267381222319955a')
+source=('AbyssPicker-97240042de866686f1da1db3847ddd5f37603e27.tar.gz::https://github.com/AbyssWM/AbyssPicker/archive/97240042de866686f1da1db3847ddd5f37603e27.tar.gz')
+sha256sums=('e20ff9b5596a8db82b9a979c633ee92f04f70c31b3f875bf8305a2c44322519f')
 
 build() {
-	cmake -S "$srcdir/AbyssPicker-fa997857bfc513c240f8b442802dee64d15e1759" -B build -G Ninja \
+	cmake -S "$srcdir/AbyssPicker-97240042de866686f1da1db3847ddd5f37603e27" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/AbyssPicker-fa997857bfc513c240f8b442802dee64d15e1759/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/AbyssPicker-97240042de866686f1da1db3847ddd5f37603e27/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abysslock
-pkgver=0.9.6.r20261017.g651a5ec
+pkgver=0.9.6.r20261027.gce1058c
 pkgrel=1
 pkgdesc='Wayland session lock for Abyss'
 arch=('x86_64')
@@ -9,15 +9,11 @@ url='https://github.com/AbyssWM/AbyssLock'
 license=('BSD-3-Clause')
 depends=('abyssgraphics' 'abyssparse' 'abyssutils' 'cairo' 'libdrm' 'libglvnd' 'libxkbcommon' 'mesa' 'pam' 'pango' 'sdbus-cpp' 'wayland' 'wayland-protocols')
 makedepends=('abyss-scanner' 'cmake' 'ninja' 'pkgconf')
-source=('AbyssLock-651a5ecf43b742965bca25e99056cf8e7cf83aa3.tar.gz::https://github.com/AbyssWM/AbyssLock/archive/651a5ecf43b742965bca25e99056cf8e7cf83aa3.tar.gz' '0001-install-pam-in-sysconfdir.patch')
-sha256sums=('86e77468c4b4c4e598a5a933c16b7436fd3348e02bf0392400838f3c8097f926' 'ce9378309dedf7e929c20a7021cc8bff4d48719434a82aaa93804c8cd97b9639')
-
-prepare() {
-	patch -d "$srcdir/AbyssLock-651a5ecf43b742965bca25e99056cf8e7cf83aa3" -p1 -i "$srcdir/0001-install-pam-in-sysconfdir.patch"
-}
+source=('AbyssLock-ce1058c6dc4f994af77a9974cb5928ff0222bb2a.tar.gz::https://github.com/AbyssWM/AbyssLock/archive/ce1058c6dc4f994af77a9974cb5928ff0222bb2a.tar.gz')
+sha256sums=('6ac29dd099a1e20eed031da1adf6acd10b8f6ebe165bd6ff9027a1e19becd12b')
 
 build() {
-	cmake -S "$srcdir/AbyssLock-651a5ecf43b742965bca25e99056cf8e7cf83aa3" -B build -G Ninja \
+	cmake -S "$srcdir/AbyssLock-ce1058c6dc4f994af77a9974cb5928ff0222bb2a" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -29,5 +25,5 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/AbyssLock-651a5ecf43b742965bca25e99056cf8e7cf83aa3/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/AbyssLock-ce1058c6dc4f994af77a9974cb5928ff0222bb2a/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
