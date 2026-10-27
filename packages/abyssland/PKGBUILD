@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: 0BSD
 # Pinned development snapshot; native Arch build verified 2026-10-18.
 pkgname=abyssland
-pkgver=0.56.2.r20261021.g0a0a351
+pkgver=0.56.2.r20261027.g48e0820
 pkgrel=1
 pkgdesc='Dynamic tiling Wayland compositor with C++ configuration'
 arch=('x86_64')
@@ -9,16 +9,16 @@ url='https://github.com/AbyssWM/Abyssland'
 license=('BSD-3-Clause' 'MIT' 'BSD-2-Clause')
 depends=('abyssal' 'abysscursor' 'abyssgraphics' 'abyssutils' 'abysswire' 'cairo' 'dbus' 'glib2' 'glslang' 'lcms2' 'libdrm' 'libei' 'libglvnd' 'libinput' 'libxcb' 'libxcursor' 'libxkbcommon' 'mesa' 'muparser' 'pango' 'pixman' 're2' 'readline' 'spirv-tools' 'util-linux-libs' 'wayland' 'wayland-protocols' 'xcb-util-errors' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'xorg-xwayland')
 makedepends=('abyss-scanner' 'abyssland-protocols' 'cmake' 'ninja' 'pkgconf' 'python')
-source=('Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39.tar.gz::https://github.com/AbyssWM/Abyssland/archive/0a0a351469da7f8281094e1d4f7abe96e2dcda39.tar.gz' 'glaze-7.2.0.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v7.2.0.tar.gz' 'udis86-5336633af70f3917760a6d441ff02d93477b0c86.tar.gz::https://github.com/canihavesomecoffee/udis86/archive/5336633af70f3917760a6d441ff02d93477b0c86.tar.gz')
-sha256sums=('2c238186e2121fe870447143a1ac77a534bffc35db7ffa2d6f950480c9a78eb1' '17dba19ae63ae48f94994f00d49d5cb3c8f1306db1046c534c4828662490b7d4' '2f459fafa19535ef1be417bf7614e4f92475e5787d7ba76df20287cc29d1b5a9')
+source=('Abyssland-48e08203f190276fd4e66c18c4e201f683978c12.tar.gz::https://github.com/AbyssWM/Abyssland/archive/48e08203f190276fd4e66c18c4e201f683978c12.tar.gz' 'glaze-7.2.0.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v7.2.0.tar.gz' 'udis86-5336633af70f3917760a6d441ff02d93477b0c86.tar.gz::https://github.com/canihavesomecoffee/udis86/archive/5336633af70f3917760a6d441ff02d93477b0c86.tar.gz')
+sha256sums=('bd937260c900b4e11273f388695e1ae908758170a8f5df2945c71c0b0dcf3906' '17dba19ae63ae48f94994f00d49d5cb3c8f1306db1046c534c4828662490b7d4' '2f459fafa19535ef1be417bf7614e4f92475e5787d7ba76df20287cc29d1b5a9')
 
 prepare() {
-	install -d "$srcdir/Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39/subprojects/udis86"
-	cp -a "$srcdir/udis86-5336633af70f3917760a6d441ff02d93477b0c86/." "$srcdir/Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39/subprojects/udis86/"
+	install -d "$srcdir/Abyssland-48e08203f190276fd4e66c18c4e201f683978c12/subprojects/udis86"
+	cp -a "$srcdir/udis86-5336633af70f3917760a6d441ff02d93477b0c86/." "$srcdir/Abyssland-48e08203f190276fd4e66c18c4e201f683978c12/subprojects/udis86/"
 }
 
 build() {
-	cmake -S "$srcdir/Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39" -B build -G Ninja \
+	cmake -S "$srcdir/Abyssland-48e08203f190276fd4e66c18c4e201f683978c12" -B build -G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -27,14 +27,14 @@ build() {
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
 		-DNO_SYSTEMD=OFF \
 		-DNO_UWSM=ON \
-		-DABYSS_CONFIG="$srcdir/Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39/config.def.hpp" \
+		-DABYSS_CONFIG="$srcdir/Abyssland-48e08203f190276fd4e66c18c4e201f683978c12/config.def.hpp" \
 		-DFETCHCONTENT_SOURCE_DIR_GLAZE="$srcdir/glaze-7.2.0"
 	cmake --build build
 }
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 "$srcdir/Abyssland-0a0a351469da7f8281094e1d4f7abe96e2dcda39/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/Abyssland-48e08203f190276fd4e66c18c4e201f683978c12/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/glaze-7.2.0/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/glaze-LICENSE"
 	install -Dm644 "$srcdir/udis86-5336633af70f3917760a6d441ff02d93477b0c86/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/udis86-LICENSE"
 }

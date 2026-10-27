@@ -1,6 +1,6 @@
 pkgbase = abyssdusk
 	pkgdesc = Display color temperature manager for Abyss
-	pkgver = 0.4.0.r20261027.g6c58248
+	pkgver = 0.4.0.r20261027.gb383b37
 	pkgrel = 1
 	url = https://github.com/AbyssWM/AbyssDusk
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = abyssdusk
 	depends = abyssutils
 	depends = wayland
 	depends = wayland-protocols
-	source = AbyssDusk-6c58248dbd91d392fde18aa7764181b80b2da539.tar.gz::https://github.com/AbyssWM/AbyssDusk/archive/6c58248dbd91d392fde18aa7764181b80b2da539.tar.gz
-	sha256sums = 9cced56fb5bc428081dddb36293241fd9ef6d006aa5e63a34881742ebb9dc077
+	source = AbyssDusk-b383b3706c40b8b6c0c76ec359ca4b89652f9b46.tar.gz::https://github.com/AbyssWM/AbyssDusk/archive/b383b3706c40b8b6c0c76ec359ca4b89652f9b46.tar.gz
+	sha256sums = 7cabb12e3d8eb24cad418a17b1e498f18a9e501066426131ad3a698c6608019a
 
 pkgname = abyssdusk
